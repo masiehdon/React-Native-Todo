@@ -7,21 +7,14 @@ const CheckboxComponent = ({ id, done, setDone, handleFinishTask }: CheckboxComp
   const [isSelected, setSelection] = useState(false);
 
   useEffect(() => {
-    handleFinishTask(id);
-  }, [isSelected, id, handleFinishTask]);
-
+    setSelection(done);
+  }, [done]);
 
   const handlePress = async (): Promise<void> => {
-    await new Promise<void>(resolve => {
-      setSelection(prevState => !prevState);
-      resolve();
-    });
-    setDone(!isSelected);
-    console.log("isSelected: ", isSelected)
-    console.log("done: ", done)
-    console.log('id: ', id)
-
-   };
+    setSelection(prevState => !prevState); 
+    setDone(!isSelected); 
+    handleFinishTask(id, !isSelected); 
+  };
 
   return (
     <View style={styles.container}>

@@ -47,11 +47,11 @@ const TodoList: React.FC<TodoListProps> = ({ task, done, setDone }) => {
     }
   };
 
-  const handleFinishTask = async (id: string) => {
+  const handleFinishTask = async (id: string, done: boolean) => {
     try {
       const { error } = await supabase
         .from('todos')
-        .update({ done: !done })
+        .update({ done })
         .eq('id', id);
       
       console.log('Task  handleFinishTask updated with: ', done)

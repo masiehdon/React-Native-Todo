@@ -45,7 +45,6 @@ export default function App() {
             is_complete: false, 
           },
         ]);
-        
       }
       console.log('task:', task);
       setTextInput('')
@@ -62,13 +61,10 @@ export default function App() {
         const { data, error } = await supabase
           .from('todos')
           .select('*');
-         
-
         if (error) {
           throw error;
         }
-
-        setTask(data || []);
+         setTask(data || []);
       } catch (error) {
         console.error('Error fetching todos:', error);
       }

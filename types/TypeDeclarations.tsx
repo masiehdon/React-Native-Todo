@@ -38,9 +38,7 @@ export interface TodoListProps {
   task: Task[];
   done: boolean;
   setDone: React.Dispatch<React.SetStateAction<boolean>>;
-  onTaskClick: (id: string) => void;
-
-}
+ }
  
 
   export interface DeleteIconProps {
