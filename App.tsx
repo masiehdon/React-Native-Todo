@@ -4,8 +4,9 @@ import { supabase } from './lib/supabase';
 import CustomInput from './components/CustomInput';
 import Auth from './components/auth/Auth';
 import { Session } from '@supabase/supabase-js';
-import { Task } from './types/TypeDeclarations'
+import { Task, TodoListProps } from './types/TypeDeclarations'
 import TodoList from './components/TodoList';
+
 
 
 export default function App() {
@@ -54,31 +55,6 @@ export default function App() {
     }
   };
 
-
-  useEffect(() => {
-    const fetchUpdatedTasks = async () => {
-      try {
-        const { data, error } = await supabase
-          .from('todos')
-          .select('*');
-        if (error) {
-          throw error;
-        }
-         setTask(data || []);
-      } catch (error) {
-        console.error('Error fetching todos:', error);
-      }
-    };
-
-    fetchUpdatedTasks();
-  }, [task, done]); 
-
-  function handleTaskClick(id: string): void {
-    throw new Error('Function handleTaskClick not implemented.');
-  }
-
-
-
   return (
     
     <SafeAreaView style={styles.container}>
@@ -94,7 +70,6 @@ export default function App() {
             task={task}
             done={done}
             setDone={setDone}
-            onTaskClick={handleTaskClick}
           />  
             <Button 
             title="Sign Out" 

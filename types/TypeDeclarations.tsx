@@ -26,11 +26,9 @@ export interface Task {
 
 export interface CheckboxComponentProps {
   task: Task[];
-  id: string;
   done: boolean;
   setDone: React.Dispatch<React.SetStateAction<boolean>>;
-  handleFinishTask: (id: string, done: boolean) => void;
-}
+ }
 
 
 
@@ -38,10 +36,9 @@ export interface TodoListProps {
   task: Task[];
   done: boolean;
   setDone: React.Dispatch<React.SetStateAction<boolean>>;
- }
+}
  
 
   export interface DeleteIconProps {
     handleDeleteItem: (id: string) => void;
-    id: string;
     };
