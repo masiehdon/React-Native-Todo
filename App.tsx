@@ -55,6 +55,24 @@ export default function App() {
     }
   };
 
+  // const handleDeleteItem= async (id: string) => {
+  //   try {
+  //     const { data, error } = await supabase
+  //     .from('todos')
+  //     .delete()
+  //     .eq('id', id)
+
+  //     console.log('id DELETE: ', id)
+
+  //     if(error) {
+  //       throw error
+  //     }
+  //   } catch (error) {
+  //     console.error('Error deleting item: ', error)
+  //   }
+  // }
+
+
   return (
     
     <SafeAreaView style={styles.container}>
