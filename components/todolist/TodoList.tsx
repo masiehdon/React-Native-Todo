@@ -1,9 +1,9 @@
-import { useState, useEffect, SetStateAction } from 'react';
-import { Task, TodoListProps } from '../types/TypeDeclarations';
-import { supabase } from '../lib/supabase';
+import { useState, useEffect } from 'react';
+import { Task, TodoListProps } from '../../types/TypeDeclarations';
+import { supabase } from '../../lib/supabase';
 import { FlatList, StyleSheet, View, Text } from 'react-native';
-import CheckboxComponent from './CheckboxComponent';
-import DeleteIcon from './DeleteIcon';
+import CheckboxComponent from '../checkbox/CheckboxComponent';
+import DeleteIcon from '../DeleteIcon';
 
 export default function TodoList({ task, done, setDone }: TodoListProps) {
   const [displayTodo, setDisplayTodo] = useState<Task[]>([]);
@@ -13,7 +13,7 @@ export default function TodoList({ task, done, setDone }: TodoListProps) {
     fetchTodos();
     console.log('fetched todos. done is: ', done);
   }, [task, done]);
-  
+
   const fetchTodos = async () => {
       try {
         const { data, error } = await supabase
@@ -58,9 +58,9 @@ export default function TodoList({ task, done, setDone }: TodoListProps) {
         id={item.id}
       />
       <Text style={styles.taskText}>{item.task}</Text>
-      <Text style={styles.taskText}>{item.id}</Text>
-      <Text style={styles.taskText}>{item.done}</Text>  
+      <Text>dummy text</Text>
       <DeleteIcon 
+      testId='test'
         handleDeleteItem={handleDeleteItem} 
         id={item.id} 
       />
@@ -68,7 +68,7 @@ export default function TodoList({ task, done, setDone }: TodoListProps) {
   );
 
   return (
-    <View>
+    <View style={styles.container}>
       <FlatList
         data={displayTodo}
         renderItem={renderItem}
@@ -79,22 +79,22 @@ export default function TodoList({ task, done, setDone }: TodoListProps) {
 } 
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
   item: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
     paddingHorizontal: 16,
     paddingVertical: 12,
-    backgroundColor: '#2c3e50', // Dark background color
-    borderRadius: 8,
-    marginBottom: 8,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ccc',
   },
   taskText: {
     flex: 1,
     marginLeft: 12,
     fontSize: 16,
-    color: '#ecf0f1', // Light text color
+    color: 'black'
   },
-});
-
-
+})

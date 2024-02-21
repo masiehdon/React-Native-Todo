@@ -1,8 +1,8 @@
 import { TextInput, Button, StyleSheet, SafeAreaView } from 'react-native';
-import { InputProps } from '../types/TypeDeclarations';
+import { InputProps } from '../../types/TypeDeclarations';
 
 
-const Input = (props: InputProps) => {
+const CustomInput = (props: InputProps) => {
   const { textInput, setTextInput } = props;
 
   const handleTextChange = (text: string) => {
@@ -11,28 +11,35 @@ const Input = (props: InputProps) => {
 };
 
 return (
-    <SafeAreaView>
+      <SafeAreaView>
       <TextInput
       style={styles.input}
         placeholder="Add a task"
         onChangeText={handleTextChange} 
         value={textInput}
       />
-      <Button 
-      title="Add Task" 
-      onPress={props.handleAddTask} 
+
+      <Button
+      title='Add Task'
+      onPress={props.handleAddTask}
       />
+
     </SafeAreaView>
   );
 };
+
 const styles = StyleSheet.create({
   input: {
-    marginTop: 30
+    // marginTop: 30,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ccc',
   }
-})
+  })
 
-export default Input;
-function setTask(arg0: never[]) {
-  throw new Error('Function not implemented.');
-}
 
+
+  export default CustomInput;

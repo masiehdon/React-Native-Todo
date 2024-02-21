@@ -41,4 +41,5 @@ export interface TodoListProps {
   export interface DeleteIconProps {
     handleDeleteItem: (id: string) => void;
     id: string;
+    testId: string;
     };

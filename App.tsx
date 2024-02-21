@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Button, StyleSheet, View, Text, SafeAreaView } from 'react-native';
 import { supabase } from './lib/supabase';
-import CustomInput from './components/CustomInput';
+import CustomInput from './components/input/CustomInput';
 import Auth from './components/auth/Auth';
 import { Session } from '@supabase/supabase-js';
 import { Task, TodoListProps } from './types/TypeDeclarations'
-import TodoList from './components/TodoList';
+import TodoList from './components/todolist/TodoList';
 
 
 
@@ -54,26 +54,7 @@ export default function App() {
       console.log('Error: ', error);
     }
   };
-
-  // const handleDeleteItem= async (id: string) => {
-  //   try {
-  //     const { data, error } = await supabase
-  //     .from('todos')
-  //     .delete()
-  //     .eq('id', id)
-
-  //     console.log('id DELETE: ', id)
-
-  //     if(error) {
-  //       throw error
-  //     }
-  //   } catch (error) {
-  //     console.error('Error deleting item: ', error)
-  //   }
-  // }
-
-
-  return (
+return (
     
     <SafeAreaView style={styles.container}>
       {session ? 
@@ -121,5 +102,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
-  },
+
+    color: 'red',
+    },
 });

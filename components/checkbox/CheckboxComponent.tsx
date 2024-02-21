@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import { StyleSheet, View} from 'react-native';
-import {CheckboxComponentProps} from '../types/TypeDeclarations'
-import { CheckBox, Icon } from 'react-native-elements';
+import {CheckboxComponentProps} from '../../types/TypeDeclarations'
+import { CheckBox } from 'react-native-elements';
 import { TouchableOpacity } from 'react-native';
-import { supabase } from '../lib/supabase';
+import { supabase } from '../../lib/supabase';
 
 
 const CheckboxComponent: React.FC<CheckboxComponentProps> = ({ done, setDone, id }) => {
@@ -22,12 +21,10 @@ const CheckboxComponent: React.FC<CheckboxComponentProps> = ({ done, setDone, id
   }
   console.log('check pressed, DONE: ', done)
     console.log('check pressed, checkbox id: ', id)
-    
 };
   
-
-return (
-  <TouchableOpacity>
+ return (
+  <TouchableOpacity testID='check'>
   <CheckBox
           checked={done}
           onPress={handlePressCheck}
